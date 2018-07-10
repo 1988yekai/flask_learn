@@ -13,7 +13,11 @@ def mylogin():
 @app.route('/FlaskTutorial', methods=['POST'])
 def success():
     if request.method == 'POST':
-        email = request.form['email']
+        # email = request.form['email']
+        parameter = request.form
+        if 'email' in parameter:
+            email = parameter['email']
+        print(type(request.form))
         return render_template('success.html', email=email)
     else:
         pass
